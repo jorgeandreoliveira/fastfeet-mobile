@@ -53,6 +53,8 @@ export default class Dashboard extends Component {
         <FilterTitle>Entregues</FilterTitle>
       </Filter>
     </FilterHeader>
+    <Delivery></Delivery>
+    <Delivery></Delivery>
     </>
   );
   }

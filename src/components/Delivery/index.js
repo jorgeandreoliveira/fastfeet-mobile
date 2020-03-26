@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import { Container, Header, TextHeader, Status,
   Footer, FooterText, FooterData, FooterDetail } from './styles';
 
-export default function Delivery() {
+export default function Delivery({data}) {
+  const dateParsed = useMemo(() => {
+      return parseISO(data.start_date);
+    }
+  );
+
   return (
   <Container>
     <Header>
@@ -14,16 +21,15 @@ export default function Delivery() {
       <TextHeader>Encomenda</TextHeader>
     </Header>
     <Status>
-
     </Status>
     <Footer>
     <View>
       <FooterText>Data</FooterText>
-      <FooterData>10/03/2020</FooterData>
+      <FooterData>{data.created_at}</FooterData>
       </View>
       <View>
       <FooterText>Cidade</FooterText>
-      <FooterData>Niterói</FooterData>
+      <FooterData>{data.Recipient.city}</FooterData>
       </View>
       <FooterDetail>Ver detalhes</FooterDetail>
     </Footer>

@@ -67,7 +67,7 @@ export const FilterTitle = styled.Text`
   padding-right: 15px;
 `;
 
-// export const List = styled.FlatList.attrs({
-//   showVerticalScrollIndicator: false,
-//   contentContainerStyle: { padding: 30 },
-// })`;
+export const List = styled.FlatList.attrs({
+  showVerticalScrollIndicator: false,
+  contentContainerStyle: { padding: 30 },
+})``;

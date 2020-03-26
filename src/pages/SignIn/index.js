@@ -40,7 +40,7 @@ export default class SignIn extends Component {
 
     AsyncStorage.setItem('@user', JSON.stringify(response.data));
 
-    navigation.navigate('Dashboard');
+    navigation.navigate('Account');
 
   };
 

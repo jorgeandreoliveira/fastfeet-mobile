@@ -8,7 +8,7 @@ import Account from '~/pages/Account';
 export default createAppContainer(
   createSwitchNavigator({
     Sign: createSwitchNavigator({
-      Dashboard,
+      SignIn,
     }),
     App: createBottomTabNavigator(
       {

@@ -77,7 +77,7 @@ export default class Dashboard extends Component {
        <List
         data={this.state.data}
         keyExtractor={item => String(item.id)}
-        renderItem={({ item }) => <Delivery data={item} />}
+        renderItem={({ item }) => <Delivery data={item} navigation={this.props.navigation} />}
         />
     </>
   );

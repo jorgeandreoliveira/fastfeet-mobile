@@ -6,7 +6,7 @@ import pt from 'date-fns/locale/pt';
 import { Container, Header, TextHeader, Status,
   Footer, FooterText, FooterData, FooterDetail } from './styles';
 
-export default function Delivery({data}) {
+export default function Delivery({data, navigation}) {
   const dateParsed = useMemo(() => {
       return parseISO(data.start_date);
     }
@@ -31,7 +31,13 @@ export default function Delivery({data}) {
       <FooterText>Cidade</FooterText>
       <FooterData>{data.Recipient.city}</FooterData>
       </View>
-      <FooterDetail>Ver detalhes</FooterDetail>
+      <FooterDetail
+      onPress={() => {
+        navigation.navigate('DeliveryDetail', {
+          delivery: data,
+        });
+      }}
+      >Ver detalhes</FooterDetail>
     </Footer>
   </Container>
   );

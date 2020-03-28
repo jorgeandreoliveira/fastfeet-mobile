@@ -4,11 +4,13 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import SignIn from '~/pages/SignIn';
 import Dashboard from '~/pages/Dashboard';
 import Account from '~/pages/Account';
+import DeliveryDetail from '~/pages/DeliveryDetail';
 
 export default createAppContainer(
   createSwitchNavigator({
     Sign: createSwitchNavigator({
-      SignIn,
+      Dashboard,
+      DeliveryDetail,
     }),
     App: createBottomTabNavigator(
       {

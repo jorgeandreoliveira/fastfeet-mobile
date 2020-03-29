@@ -1,23 +1,32 @@
 import React, {Component} from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { Container, Header, Text, Delivery, DeliveryHeader, TextHeader,
+import { Container, Delivery, DeliveryHeader, TextHeader,
   DeliveryInfo, TextInfo, DataInfo, StatusHeader, StatusInfo, StatusInfoDate,
   DeliveryStatus, Buttons, TextButtons, IconButtons, ViewButtons, Rect } from './styles';
+import Header from '~/components/Header';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class DeliveryDetail extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  handleProblemReport = () => {
+    const { navigation } = this.props;
+    navigation.navigate('ProblemReport');
+  };
+
   render() {
     const { delivery } = this.props.navigation.state.params;
+    const { navigation } = this.props;
+
     return (
       <Container>
-          <Header>
-            <Text>Detalhes da encomenda</Text>
-          </Header>
+          <Header data={'Detalhes da encomenda'} />
           <Delivery>
             <DeliveryHeader>
-              <TouchableOpacity onPress={() => {}}>
                 <Icon name="local-shipping" size={24} color="#7d40e7" />
-              </TouchableOpacity>
               <TextHeader>Informações da entrega</TextHeader>
           </DeliveryHeader>
           <DeliveryInfo>
@@ -30,10 +39,8 @@ export default class DeliveryDetail extends Component {
               <DataInfo>{delivery.product}</DataInfo>
           </DeliveryInfo>
           <StatusHeader>
-              <TouchableOpacity onPress={() => {}}>
-                <Icon name="event" size={24} color="#7d40e7" />
-              </TouchableOpacity>
-              <TextHeader>Informações da entrega</TextHeader>
+            <Icon name="event" size={24} color="#7d40e7" />
+          <TextHeader>Informações da entrega</TextHeader>
           </StatusHeader>
           <StatusInfo>
             <TextInfo>STATUS</TextInfo>
@@ -49,11 +56,16 @@ export default class DeliveryDetail extends Component {
               <DataInfo>{delivery.end_date}</DataInfo>
             </View>
           </StatusInfoDate>
+          </Delivery>
           <Buttons>
             <ViewButtons>
-              <IconButtons onPress={() => {}}>
+              <TouchableOpacity onPress={() => {
+                navigation.navigate('ProblemReport', {
+                  delivery: delivery,
+                });
+              }}>
                 <Icon name="highlight-off" size={24} color="#e74040" />
-              </IconButtons>
+              </TouchableOpacity>
               <TextButtons>Informar</TextButtons>
               <TextButtons>problema</TextButtons>
             </ViewButtons>
@@ -74,7 +86,7 @@ export default class DeliveryDetail extends Component {
               <TextButtons>entrega</TextButtons>
             </ViewButtons>
           </Buttons>
-          </Delivery>
+
       </Container>
     );
   }

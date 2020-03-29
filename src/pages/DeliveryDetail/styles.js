@@ -1,24 +1,12 @@
 import styled from 'styled-components/native';
+import { TouchableOpacity } from 'react-native';
 
 export const Container = styled.View`
 
 `;
 
-export const Header = styled.View`
-  height: 155px;
-  background-color: #7d40e7;
-  padding-top: 20px;
-`;
-
-export const Text = styled.Text`
-  color: #fff;
-  text-align: center;
-  font-weight: bold;
-  font-size: 16px;
-`;
-
 export const Delivery = styled.View`
-  height: 207px;
+  height: 365px;
   width: 320px;
   background-color: #fff;
   position: absolute;
@@ -87,12 +75,15 @@ export const DeliveryStatus = styled.View`
 
 export const Buttons = styled.View`
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
-    padding-top: 5px;
-    padding-left: 14px;
-    border-radius: 4px;
+    padding-left: 20px;
+    width: 335px;
     height: 83px;
+    position: absolute;
+    align-items: center;
+    top: 440px;
+    left: 8px;
+    border-radius: 4px;
     color: #f8f9fd;
 `;
 
@@ -105,7 +96,7 @@ export const TextButtons = styled.Text`
   color: #999;
 `;
 
-export const IconButtons = styled.TouchableOpacity`
+export const IconButtons = styled(TouchableOpacity)`
   align-items: center;
 `;
 

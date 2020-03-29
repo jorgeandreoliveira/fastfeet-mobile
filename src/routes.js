@@ -5,12 +5,14 @@ import SignIn from '~/pages/SignIn';
 import Dashboard from '~/pages/Dashboard';
 import Account from '~/pages/Account';
 import DeliveryDetail from '~/pages/DeliveryDetail';
+import ProblemReport from '~/pages/ProblemReport';
 
 export default createAppContainer(
   createSwitchNavigator({
     Sign: createSwitchNavigator({
       Dashboard,
       DeliveryDetail,
+      ProblemReport,
     }),
     App: createBottomTabNavigator(
       {

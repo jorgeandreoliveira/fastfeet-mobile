@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Container, Center, Avatar, Profile, Label, Data, Logout, LogoutText } from './styles';
-import api from '~/services/api';
 
 export default class Account extends Component {
 

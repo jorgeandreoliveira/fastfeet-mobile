@@ -6,6 +6,7 @@ import Dashboard from '~/pages/Dashboard';
 import Account from '~/pages/Account';
 import DeliveryDetail from '~/pages/DeliveryDetail';
 import ProblemReport from '~/pages/ProblemReport';
+import ProblemList from '~/pages/ProblemList';
 
 export default createAppContainer(
   createSwitchNavigator({
@@ -13,6 +14,7 @@ export default createAppContainer(
       Dashboard,
       DeliveryDetail,
       ProblemReport,
+      ProblemList,
     }),
     App: createBottomTabNavigator(
       {

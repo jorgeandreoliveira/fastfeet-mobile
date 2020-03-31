@@ -12,18 +12,13 @@ export default class DeliveryDetail extends Component {
     super(props);
   }
 
-  handleProblemReport = () => {
-    const { navigation } = this.props;
-    navigation.navigate('ProblemReport');
-  };
-
   render() {
     const { delivery } = this.props.navigation.state.params;
     const { navigation } = this.props;
 
     return (
       <Container>
-          <Header data={'Detalhes da encomenda'} />
+          <Header text={'Detalhes da encomenda'} />
           <Delivery>
             <DeliveryHeader>
                 <Icon name="local-shipping" size={24} color="#7d40e7" />
@@ -71,9 +66,14 @@ export default class DeliveryDetail extends Component {
             </ViewButtons>
             <Rect/>
             <ViewButtons>
-              <IconButtons onPress={() => {}}>
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('ProblemList', {
+                  product: delivery.product,
+                  problems: delivery.DeliveryProblems,
+                });
+              }}>
                 <Icon name="info-outline" size={24} color="#e7ba40" />
-              </IconButtons>
+              </TouchableOpacity>
               <TextButtons>Visualizar</TextButtons>
               <TextButtons>problemas</TextButtons>
             </ViewButtons>
@@ -86,7 +86,6 @@ export default class DeliveryDetail extends Component {
               <TextButtons>entrega</TextButtons>
             </ViewButtons>
           </Buttons>
-
       </Container>
     );
   }

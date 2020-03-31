@@ -33,7 +33,7 @@ export default class ProblemReport extends Component {
   render() {
     return (
       <Container>
-          <Header data={'Informar problema'} />
+          <Header text={'Informar problema'} />
           <Content>
             <TextInput
               onChangeText={text => this.setState({value:text})}

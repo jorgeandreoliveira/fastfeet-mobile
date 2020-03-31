@@ -12,3 +12,11 @@ export const Text = styled.Text`
   font-weight: bold;
   font-size: 16px;
 `;
+
+export const SubText = styled.Text`
+  color: #fff;
+  padding-top: 30px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+`;

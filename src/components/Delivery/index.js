@@ -18,7 +18,7 @@ export default function Delivery({data, navigation}) {
       <TouchableOpacity onPress={() => {}}>
         <Icon name="local-shipping" size={24} color="#7d40e7" />
       </TouchableOpacity>
-      <TextHeader>Encomenda</TextHeader>
+      <TextHeader>{data.product}</TextHeader>
     </Header>
     <Status>
     </Status>

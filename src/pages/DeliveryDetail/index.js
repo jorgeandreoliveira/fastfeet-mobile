@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { View, TouchableOpacity } from 'react-native';
+import { parseISO, format } from 'date-fns';
 import { Container, Delivery, DeliveryHeader, TextHeader,
   DeliveryInfo, TextInfo, DataInfo, StatusHeader, StatusInfo, StatusInfoDate,
   DeliveryStatus, Buttons, TextButtons, IconButtons, ViewButtons, Rect } from './styles';
@@ -15,6 +16,24 @@ export default class DeliveryDetail extends Component {
   render() {
     const { delivery } = this.props.navigation.state.params;
     const { navigation } = this.props;
+
+    let startDate;
+
+    if (delivery.start_date) {
+      startDate = <DataInfo>{format(parseISO(delivery.start_date), "dd'/'MM'/'yyyy")}</DataInfo>
+    }
+    else {
+      startDate = <DataInfo>{delivery.start_date}</DataInfo>
+    }
+
+    let endDate;
+
+    if (delivery.end_date) {
+      endDate = <DataInfo>{format(parseISO(delivery.end_date), "dd'/'MM'/'yyyy")}</DataInfo>
+    }
+    else {
+      endDate = <DataInfo>{delivery.end_date}</DataInfo>
+    }
 
     return (
       <Container>
@@ -44,11 +63,11 @@ export default class DeliveryDetail extends Component {
           <StatusInfoDate>
             <View>
               <TextInfo>DATA DE RETIRADA</TextInfo>
-              <DataInfo>{delivery.start_date}</DataInfo>
+              {startDate}
             </View>
             <View>
               <TextInfo>DATA DE ENTREGA</TextInfo>
-              <DataInfo>{delivery.end_date}</DataInfo>
+              {endDate}
             </View>
           </StatusInfoDate>
           </Delivery>
@@ -79,9 +98,13 @@ export default class DeliveryDetail extends Component {
             </ViewButtons>
             <Rect/>
             <ViewButtons>
-              <IconButtons onPress={() => {}}>
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('DeliveryConfirm', {
+                  delivery: delivery,
+                });
+              }}>
                 <Icon name="alarm-on" size={24} color="#7d40e7" />
-              </IconButtons>
+              </TouchableOpacity>
               <TextButtons>Confirmar</TextButtons>
               <TextButtons>entrega</TextButtons>
             </ViewButtons>

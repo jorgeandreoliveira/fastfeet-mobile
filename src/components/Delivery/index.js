@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { parseISO, format } from 'date-fns';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt';
 import { Container, Header, TextHeader, Status,
   Footer, FooterText, FooterData, FooterDetail } from './styles';
 
@@ -11,6 +10,15 @@ export default function Delivery({data, navigation}) {
       return parseISO(data.start_date);
     }
   );
+
+  let createdAt;
+
+    if (data.created_at) {
+      createdAt = <FooterData>{format(parseISO(data.created_at), "dd'/'MM'/'yyyy")}</FooterData>
+    }
+    else {
+      createdAt = <FooterData>{data.created_at}</FooterData>
+    }
 
   return (
   <Container>
@@ -25,7 +33,7 @@ export default function Delivery({data, navigation}) {
     <Footer>
     <View>
       <FooterText>Data</FooterText>
-      <FooterData>{data.created_at}</FooterData>
+      {createdAt}
       </View>
       <View>
       <FooterText>Cidade</FooterText>

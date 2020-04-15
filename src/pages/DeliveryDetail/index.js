@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Alert } from 'react-native';
 import { parseISO, format } from 'date-fns';
+import api from '~/services/api';
 import { Container, Delivery, DeliveryHeader, TextHeader,
   DeliveryInfo, TextInfo, DataInfo, StatusHeader, StatusInfo, StatusInfoDate,
   DeliveryStatus, Buttons, TextButtons, IconButtons, ViewButtons, Rect } from './styles';
@@ -12,6 +13,34 @@ export default class DeliveryDetail extends Component {
   constructor(props) {
     super(props);
   }
+
+  state = {
+    deliveryUpdated:{},
+  };
+
+  handleStartDelivery = async () => {
+
+    const { delivery } = this.props.navigation.state.params;
+
+    await api.put(`/delivery/${delivery.id}`, {
+      start_date: new Date(),
+      deliveryman_id: delivery.deliveryman_id,
+    }).catch(error => {
+      console.log(Alert.alert(
+        "",
+        error.response.data.error,
+        ))
+    })
+
+    const response = await api.get(`/delivery/${delivery.id}`);
+
+    this.setState({deliveryUpdated: response.data });
+
+    const { navigation } = this.props;
+    navigation.navigate('DeliveryDetail', {
+      delivery: this.state.deliveryUpdated,
+    });
+  };
 
   render() {
     const { delivery } = this.props.navigation.state.params;
@@ -72,6 +101,14 @@ export default class DeliveryDetail extends Component {
           </StatusInfoDate>
           </Delivery>
           <Buttons>
+          <ViewButtons>
+              <TouchableOpacity onPress={this.handleStartDelivery}>
+                <Icon name="add-circle-outline" size={24} color="#82BF18" />
+              </TouchableOpacity>
+              <TextButtons>Retirar</TextButtons>
+              <TextButtons>encomenda</TextButtons>
+            </ViewButtons>
+            <Rect/>
             <ViewButtons>
               <TouchableOpacity onPress={() => {
                 navigation.navigate('ProblemReport', {
@@ -87,8 +124,7 @@ export default class DeliveryDetail extends Component {
             <ViewButtons>
             <TouchableOpacity onPress={() => {
                 navigation.navigate('ProblemList', {
-                  product: delivery.product,
-                  problems: delivery.DeliveryProblems,
+                  deliveryId: delivery.id
                 });
               }}>
                 <Icon name="info-outline" size={24} color="#e7ba40" />

@@ -62,10 +62,10 @@ export const StatusInfo = styled.View`
 
 export const StatusInfoDate = styled.View`
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
   padding-top: 5px;
   padding-left: 14px;
+  padding-right: 20px;
 `;
 
 export const DeliveryStatus = styled.View`
@@ -75,20 +75,18 @@ export const DeliveryStatus = styled.View`
 
 export const Buttons = styled.View`
     flex-direction: row;
-    justify-content: space-between;
-    padding-left: 20px;
-    width: 335px;
     height: 83px;
     position: absolute;
     align-items: center;
-    top: 440px;
-    left: 8px;
+    top: 435px;
+    left: 20px;
     border-radius: 4px;
-    color: #f8f9fd;
+    background-color: #fff;
 `;
 
 export const ViewButtons = styled.View`
     align-items: center;
+    width: 78.5px;
 `;
 
 export const TextButtons = styled.Text`

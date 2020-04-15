@@ -11,56 +11,57 @@ from './styles';
 export default class Dashboard extends Component {
 
   state = {
-    user: {},
+    id: 0,
+    deliveryMan: {},
     data: [],
   };
 
   async componentDidMount() {
-    const user = await AsyncStorage.getItem('@user');
+    const id = await AsyncStorage.getItem('@user');
+    this.setState({ id });
 
-    this.setState({ user: JSON.parse(user) });
+    const responseDeliveryMan = await api.get(`/deliveryman/${this.state.id}`);
 
-    const response = await api.get(`/deliveryman/${this.state.user.id}/false`);
+    this.setState({deliveryMan: responseDeliveryMan.data})
 
-    this.setState({ data: response.data});
+    const responseDelivery = await api.get(`/deliveryman/${this.state.id}/false`);
+
+    this.setState({ data: responseDelivery.data});
+
+    //console.log(this.state.deliveryMan.avatar.url);
   }
 
   async handleDelivered() {
 
-    const response = await api.get(`/deliveryman/${this.state.user.id}/true`);
+    const response = await api.get(`/deliveryman/${this.state.id}/true`);
 
     this.setState({ data: response.data});
-
   }
 
   async handlePending() {
 
-    const response = await api.get(`/deliveryman/${this.state.user.id}/false`);
+    const response = await api.get(`/deliveryman/${this.state.id}/false`);
 
     this.setState({ data: response.data});
   }
 
   async handleExit() {
-
     AsyncStorage.removeItem('@user');
     const { navigation } = this.props;
     navigation.navigate('SignIn');
   }
 
   render() {
-    Dashboard.navigationOptions = {
-      tabBarLabel: 'Entregas',
-    };
-
   return (
     <>
     <Container>
       <Left>
+        {/* <Avatar source={{ uri: this.state.deliveryMan.avatar ? this.state.deliveryMan.avatar.url : 'https://api.adorable.io/avatar/50/abott@adorable.png'}} */}
         <Avatar source={{ uri: 'https://api.adorable.io/avatar/50/abott@adorable.png'}}
         />
         <Info>
           <Welcome>Bem vindo de volta,</Welcome>
-          <Name>Gaspar Antunes</Name>
+          <Name>{this.state.deliveryMan.name}</Name>
         </Info>
       </Left>
       <TouchableOpacity onPress={() => {}}>

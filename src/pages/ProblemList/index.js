@@ -2,21 +2,21 @@ import React, {Component} from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import Header from '~/components/Header';
 import { Container, Content, LeftText, RightText, ListItem } from './styles';
+import api from '~/services/api';
 
 export default class ProblemList extends Component {
 
   state = {
-    product: null,
-    problems: null,
+    delivery: {},
   };
 
   async componentDidMount() {
 
-    const { product } = this.props.navigation.state.params;
-    const { problems } = this.props.navigation.state.params;
+    const { deliveryId } = this.props.navigation.state.params;
 
-    this.setState({problems: problems});
-    this.setState({product: product});
+    const response = await api.get(`/delivery/${deliveryId}`);
+
+    this.setState({delivery: response.data });
   }
 
   renderItem = ({ item }) => (
@@ -29,12 +29,12 @@ export default class ProblemList extends Component {
   render() {
     return (
       <Container>
-          <Header text={'Visualizar problemas'} subtext={this.state.product} />
+          <Header text={'Visualizar problemas'} subtext={this.state.delivery.product} />
           <Content>
           <FlatList
             style={{ marginTop: 30 }}
             contentContainerStyle={styles.list}
-            data={this.state.problems}
+            data={this.state.delivery.DeliveryProblems}
             renderItem={this.renderItem}
             keyExtractor={item => item.id.toString()}
           />

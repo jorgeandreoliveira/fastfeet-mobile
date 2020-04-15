@@ -16,9 +16,46 @@ export const TextHeader = styled.Text`
   padding-left: 10px;
 `;
 
-export const Status = styled.View`
-
+export const TimeLine = styled.View`
+  flex-direction: row;
+  align-items: center;
+  padding-top: 24px;
+  padding-left: 43px;
 `;
+export const TimeLineStatus = styled.View`
+  flex-direction: row;
+  align-items: center;
+  width: 200px;
+  padding-top: 10px;
+  padding-left: 30px;
+`;
+
+export const TimeLineText = styled.Text`
+  color: #999;
+  font-size: 8px;
+  margin-right:40px;
+  width: 70px;
+  align-items: center;
+`;
+
+export const Circle = styled.View`
+  width: 9px;
+  height: 9px;
+  border-radius: 50px;
+  border-width: 1px;
+  background-color: ${props => props.background || "#fff"};
+  border-color: #7D40E7;
+`;
+
+export const Line = styled.View`
+  width: 100px;
+  height: 1px;
+  background-color: #7D40E7;
+`;
+
+
+
+
 
 export const Footer = styled.View`
   flex-direction: row;

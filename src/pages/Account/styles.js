@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
   margin-bottom: 15px;
   padding: 20px;
+  padding-top: 85px;
   border-radius: 4px;
   background: #fff;
   display: flex;
@@ -16,6 +17,7 @@ export const Avatar = styled.Image`
 
 export const Profile = styled.View`
   padding-top: 20px;
+  padding-bottom: 30px;
 `;
 
 export const Label = styled.Text`

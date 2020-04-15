@@ -6,7 +6,7 @@ import api from '~/services/api';
 export default class DeliveryConfirm extends Component {
 
   state = {
-    delivery: null,
+    delivery: {},
   };
 
   async componentDidMount() {
@@ -20,10 +20,11 @@ export default class DeliveryConfirm extends Component {
 
     const { id } = this.state.delivery;
 
-    const response = await api.put(`/delivery/${id}`, {
-      id: id,
+    await api.put(`/delivery/${id}`, {
       end_date: new Date(),
     });
+
+    const response = await api.get(`/delivery/${id}`);
 
     this.setState({delivery: response.data});
 

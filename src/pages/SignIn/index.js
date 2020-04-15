@@ -15,7 +15,7 @@ export default class SignIn extends Component {
   // };
 
   state = {
-    id: '',
+    id: 0,
     user: {},
   };
 
@@ -38,10 +38,11 @@ export default class SignIn extends Component {
 
     const response = await api.get(`/deliveryman/${id}`);
 
-    AsyncStorage.setItem('@user', JSON.stringify(response.data));
+    this.setState({user:response.data});
+
+    await AsyncStorage.setItem('@user', this.state.user.id.toString());
 
     navigation.navigate('Dashboard');
-
   };
 
   render() {

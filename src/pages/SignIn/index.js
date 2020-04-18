@@ -19,19 +19,6 @@ export default class SignIn extends Component {
     user: {},
   };
 
-  // async componentDidUpdate(_, prevState) {
-
-  //   console.log('componentDidUpdate');
-
-  //   const { user } = this.state;
-
-  //   console.log(this.state);
-
-  //   if (prevState.user != user) {
-  //     AsyncStorage.setItem('user', JSON.stringify(user));
-  //   }
-  // };
-
   handleLogin = async () => {
     const { id } = this.state;
     const { navigation } = this.props;

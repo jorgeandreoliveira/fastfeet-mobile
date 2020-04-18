@@ -28,7 +28,6 @@ export default class Dashboard extends Component {
 
     this.setState({ data: responseDelivery.data});
 
-    //console.log(this.state.deliveryMan.avatar.url);
   }
 
   async handleDelivered() {
@@ -56,8 +55,7 @@ export default class Dashboard extends Component {
     <>
     <Container>
       <Left>
-        {/* <Avatar source={{ uri: this.state.deliveryMan.avatar ? this.state.deliveryMan.avatar.url : 'https://api.adorable.io/avatar/50/abott@adorable.png'}} */}
-        <Avatar source={{ uri: 'https://api.adorable.io/avatar/50/abott@adorable.png'}}
+        <Avatar source={{ uri: this.state.deliveryMan.avatar ? this.state.deliveryMan.avatar.url : 'https://api.adorable.io/avatar/50/abott@adorable.png'}}
         />
         <Info>
           <Welcome>Bem vindo de volta,</Welcome>

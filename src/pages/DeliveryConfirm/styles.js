@@ -7,13 +7,10 @@ export const Container = styled.View`
 
 export const Content = styled.View`
   width: 335px;
-  height: 300px;
-  background-color: #fff;
+  height: 400px;
   position: absolute;
-  top: 404px;
+  top: 180px;
   left: 14px;
-  border-radius: 4px;
-  border-color: #0000001A;
 `;
 
 export const SubmitButton = styled(RectButton)`
@@ -23,6 +20,8 @@ export const SubmitButton = styled(RectButton)`
   border-radius: 4px;
   height: 45px;
   color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 25px;
 `;
 
 export const SubmitButtonText = styled.Text`

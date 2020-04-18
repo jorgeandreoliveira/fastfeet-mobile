@@ -3,16 +3,22 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
   margin-bottom: 15px;
   padding: 20px;
-  padding-top: 85px;
-  border-radius: 4px;
+  padding-top: 60px;
   background: #fff;
   display: flex;
 `;
 
-export const Avatar = styled.Image`
+export const Avatar = styled.View`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40px;
+`;
+
+export const AvatarInput = styled.Image`
   width: 136px;
   height: 136px;
-  border-radius: 50px;
+  border-radius: 70px;
 `;
 
 export const Profile = styled.View`

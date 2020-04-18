@@ -8,12 +8,6 @@ import { Container, Form, Input, SubmitButton, SubmitButtonText} from './styles'
 
 export default class SignIn extends Component {
 
-  // static propTypes = {
-  //   navigation: PropTypes.shape({
-  //     navigate: PropTypes.func,
-  //   }).isRequired,
-  // };
-
   state = {
     id: 0,
     user: {},
